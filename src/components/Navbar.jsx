@@ -70,14 +70,14 @@ export default function Navbar() {
               </ul>
             </div>
           ) : (
-            <div className="flex items-center gap-2">
-              <Link 
-                href="/auth/login" 
-                className="btn btn-sm md:btn-md bg-gradient-to-r from-blue-500 to-green-500 border-none text-white font-bold"
-              >
-                Login
-              </Link>
-            </div>
+           <div className="navbar-end gap-3">
+           <Link 
+             href="/auth/register" 
+             className="btn btn-sm md:btn-md bg-gradient-to-r from-blue-500 to-green-500 border-none text-white font-bold"
+           >
+             Register
+           </Link>
+           </div>
           )}
         </div>
       </div>
