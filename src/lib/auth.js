@@ -1,22 +1,15 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
-import clientPromise from "./mongodb";
+import { MongoClient } from "mongodb";
 
-const client = await clientPromise;
-const db = client.db("SunCartDB");
+const client = new MongoClient(process.env.MONGODB_URI);
+const db = client.db("suncart");
 
 export const auth = betterAuth({
   database: mongodbAdapter(db),
-
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL: process.env.BETTER_AUTH_URL,
-
-  emailAndPassword: {
-    enabled: true,
-    autoSignIn: true,
-    minPasswordLength: 6,
-  },
-
+  emailAndPassword: { enabled: true },
   socialProviders: {
     google: {
       clientId: process.env.GOOGLE_CLIENT_ID,
